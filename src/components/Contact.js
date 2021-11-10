@@ -1,9 +1,8 @@
 import React from "react";
-import {SendContact} from "../_helpers/apiFetch";
 import { ToastContainer, toast } from 'react-toastify';
 import validations from "../_helpers/validations";
 import Ajaxloader from '../assets/loader.svg'
-
+import emailjs from "emailjs-com"
 
 export default class Contact  extends  React.Component {
     state = {
@@ -29,66 +28,51 @@ export default class Contact  extends  React.Component {
     }
 
 
-    onSubmit = (e) => {
+    HandleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.state.form)
+        console.log(e)
 
         if (validations(this.state.form) === 'success') {
             this.setState({
                 loading : true
             })
-            const dataSend = {
-                name: this.state.form.name,
-                email: this.state.form.email,
-                subject: this.state.form.subject,
-                message: this.state.form.message
-            }
-            const sendcontact = SendContact(dataSend)
-            this.setState({
-                resData : sendcontact
-            })
 
+           emailjs.sendForm(
+               "service_dozahjn",
+               "template_mrkd4u3",
+               e.target,
+               "user_eEKKxkwrpn3PATv8Jgj1q")
+               .then(res=>{
+                       this.setState({
+                           loading : false,
+                           form :  {
+                               name: '',
+                               email: '',
+                               subject: '',
+                               message: '',
+                           }
+                       })
+                       toast.info("Message send successfully, We will get in touch soon", {
+                           position: "top-right",
+                           autoClose: 5000,
+                           hideProgressBar: false,
+                           closeOnClick: true,
+                           pauseOnHover: true,
+                           draggable: true,
+                           progress: undefined,
+                       });
 
+               }).catch(err => toast.error("Some error Occured return", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+           }))
 
-            setTimeout(() => {
-                console.log(this.state.resData)
-
-                if (this.state.resData){
-                    this.setState({
-                        loading : false,
-                        form :  {
-                            name: '',
-                            email: '',
-                            subject: '',
-                            message: '',
-                        }
-                    })
-                    toast.info("Message send successfully", {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                }
-                else{
-                    this.setState({
-                        loading : false
-                    })
-                    toast.error("Some error Occured return", {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                }
-            },4000)
 
         }
         else {
@@ -132,7 +116,7 @@ export default class Contact  extends  React.Component {
                         </div>
                         <div className="row">
                             <div className="col-lg-6">
-                                <form action="https://mariama.netlify.app/html/assets/php/mail.php" method="post"
+                                <form  method="post" onSubmit={this.HandleSubmit}
                                       id="main_contact_form" className="form contact_form ">
 
                                     <div className="form-group">
@@ -172,7 +156,7 @@ export default class Contact  extends  React.Component {
                                         <small className="form-error">{this.state.messageError}</small>
                                     </div>
 
-                                    <button type="submit" name="submit" className="btn-custom" onClick={e => this.onSubmit(e)}>
+                                    <button type="submit" name="submit" className="btn-custom" >
                                         {load ? <img src={Ajaxloader} alt="" style={{width : "20px"}} /> : <span>
                                             <span><i className="fas fa-paper-plane"></i></span>
                                         <span> Send Message</span>
