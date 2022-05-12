@@ -69,6 +69,13 @@
       }
     ],
     "work" : [
+
+       {
+        "image" : "https://i.ibb.co/RBkZfz2/sofraco.png",
+        "titre" : "Sofraco",
+        "link" : "https://www.sofraco.org"
+      },
+
       {
         "image" : "https://i.ibb.co/HC69YGb/sototechservices-com.png",
         "titre" : "Sototech Services",
@@ -78,6 +85,9 @@
         "titre" : "Digicant",
         "link" : "https://www.digitcant.com"
       }
+
+
+
     ],
     "service" : [
       {
@@ -108,8 +118,8 @@
     ],
     "blog" : [],
     "subAbout" : {
-      "projects" : 5,
-      "customers" : 0
+      "projects" : 6,
+      "customers" : 3
     }
   }
 }
