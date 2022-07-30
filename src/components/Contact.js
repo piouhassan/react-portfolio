@@ -28,11 +28,12 @@ import * as Yup from "yup"
             emailjs.sendForm(
                 "service_dozahjn",
                 "template_mrkd4u3",
-                values,
+                document.getElementById('contact_form'),
                 "user_eEKKxkwrpn3PATv8Jgj1q"
             ).then(res => {
                 console.log(res)
                 setLoading(false)
+                document.getElementById('contact_form').reset()
                 toast.info("Message send successfully, We will get in touch soon");
             }).catch(err => {
                 setLoading(false)
@@ -67,7 +68,7 @@ import * as Yup from "yup"
                                     onSubmit={handleSubmit}
                                 >
                                     {({ errors, touched }) =>
-                                        <Form className="form contact_form ">
+                                        <Form className="form contact_form " id="contact_form"    >
                                             
                                             <div className="form-group">
                                                 <Field  style={{color : "#fff"}} className={`form-control ${errors.name && touched.name ? 'is-invalid' : null}`} id="input-name"  name="name" placeholder="Fullname"/>
