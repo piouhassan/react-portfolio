@@ -58,7 +58,7 @@ const About = ({experiences,educations,sociales,subAbout,about}) => {
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="item">
                                 <div className="icon mb-10"><i className="fas fa-user"/></div>
-                                <p className="mb-0">{subAbout?.projects  + 11} Projects end</p>
+                                <p className="mb-0">{subAbout?.projects + 11} Projects end</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6">
