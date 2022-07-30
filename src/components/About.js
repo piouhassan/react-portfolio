@@ -58,7 +58,7 @@ const About = ({experiences,educations,sociales,subAbout,about}) => {
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="item">
                                 <div className="icon mb-10"><i className="fas fa-user"/></div>
-                                <p className="mb-0">{subAbout?.projects ?? 0 + 11} Projects end</p>
+                                <p className="mb-0">{subAbout?.projects  + 11} Projects end</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6">
@@ -66,7 +66,7 @@ const About = ({experiences,educations,sociales,subAbout,about}) => {
                                 <div className="icon mb-10">
                                     <i className="fas fa-smile"/>
                                 </div>
-                                <p className="mb-0">{subAbout?.customers  ?? 0 + 11} Satisfied Clients</p>
+                                <p className="mb-0">{subAbout?.customers  + 11} Satisfied Clients</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6">
