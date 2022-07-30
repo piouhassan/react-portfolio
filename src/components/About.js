@@ -3,11 +3,8 @@ import moment from 'moment'
 import moi from '../assets/moi.jpg'
 import {Link} from "react-router-dom";
 
-const About = (props) => {
-    const experiences = props.experiences
-    const educations = props.educations
-    var sociales = props.sociales
-    var subAbout  = props.subAbout
+const About = ({experiences,educations,sociales,subAbout,about}) => {
+   
 
     return (
 
@@ -31,25 +28,25 @@ const About = (props) => {
 
                         <div className="col-lg-7 d-flex align-items-center">
                             <div className="details">
-                                <h5>Hello ,I'm {props.about.firstname} {props.about.lastname}</h5>
+                                <h5>Hello ,I'm {about?.firstname} {about?.lastname}</h5>
                                 <p className="mb-25">
-                                    {props.about.description}
+                                    {about?.description}
                                 </p>
 
                                 <ul className="info mb-5 list-inline">
-                                    <li><span>Name :</span> {props.about.firstname} {props.about.lastname}</li>
-                                    <li><span>Phone :</span> {props.about.phone}</li>
-                                    <li><span>Date of birth :</span> {moment(props.about.birthday,).format('Do MMMM YYYY')}</li>
-                                    <li><span>Email :</span><Link to={{pathname : `mailto:${sociales.gmail}`}} >{sociales.gmail}</Link>
+                                    <li><span>Name :</span> {about?.firstname} {about?.lastname}</li>
+                                    <li><span>Phone :</span> {about?.phone}</li>
+                                    <li><span>Date of birth :</span> {moment(about?.birthday,).format('Do MMMM YYYY')}</li>
+                                    <li><span>Email :</span><Link to={{pathname : `mailto:${sociales?.gmail}`}} >{sociales?.gmail}</Link>
                                     </li>
-                                    <li><span>Nationality :</span> {props.about.nationality}</li>
-                                    <li><span>Address :</span> {props.about.city} {props.about.country}</li>
-                                    <li><span>Work Status :</span> {props.about.work}</li>
-                                    <li><span>Freelancer :</span> {props.about.freelance === 1 ? "Available" : "not Available" }</li>
+                                    <li><span>Nationality :</span> {about?.nationality}</li>
+                                    <li><span>Address :</span> {about?.city} {about?.country}</li>
+                                    <li><span>Work Status :</span> {about?.work}</li>
+                                    <li><span>Freelancer :</span> {about?.freelance === 1 ? "Available" : "not Available" }</li>
                                 </ul>
 
-                                    <Link to={{pathname : props.about.cv}} target="_blank" className="btn-custom">
-                                    <span><i className="fas fa-cloud-download-alt"></i></span>
+                                    <Link to={{pathname : about?.cv}} target="_blank" className="btn-custom">
+                                    <span><i className="fas fa-cloud-download-alt"/></span>
                                     <span>Download My CV</span>
                                     </Link>
                             </div>
@@ -60,22 +57,22 @@ const About = (props) => {
                     <div className="row features mb-20">
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="item">
-                                <div className="icon mb-10"><i className="fas fa-user"></i></div>
-                                <p className="mb-0">{subAbout.projects + 11} Projects end</p>
+                                <div className="icon mb-10"><i className="fas fa-user"/></div>
+                                <p className="mb-0">{subAbout?.projects ?? 0 + 11} Projects end</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="item">
                                 <div className="icon mb-10">
-                                    <i className="fas fa-smile"></i>
+                                    <i className="fas fa-smile"/>
                                 </div>
-                                <p className="mb-0">{subAbout.customers + 11} Satisfied Clients</p>
+                                <p className="mb-0">{subAbout?.customers  ?? 0 + 11} Satisfied Clients</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="item">
                                 <div className="icon mb-10">
-                                    <i className="fas fa-certificate"></i>
+                                    <i className="fas fa-certificate"/>
                                 </div>
                                 <p className="mb-0">+{moment('20150605','YYYYMMDD').fromNow(true)}  Exp</p>
                             </div>
@@ -89,7 +86,7 @@ const About = (props) => {
                             <h5 className="mb-30">My Experience</h5>
                             <div className="timeline">
                                 {
-                                    experiences.map((item,k) =>
+                                    experiences?.map((item,k) =>
                                         <div key={k} className="item">
                                             <div className="content">
                                                 <h6 className="mb-0">{item.role}
@@ -109,7 +106,7 @@ const About = (props) => {
                             <h5 className="mb-30">My Education</h5>
                             <div className="timeline">
                                 {
-                                    educations.map((item,k) =>
+                                    educations?.map((item,k) =>
                                         <div key={k} className="item">
                                             <div className="content">
                                                 <h6 className="mb-0">{item.diplome}

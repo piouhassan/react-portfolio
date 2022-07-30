@@ -1,8 +1,8 @@
 import React from "react";
 
 
-const Portfolio = (props) => {
-    const work = props.work
+const Portfolio = ({work}) => {
+
 
     return (
         <>
@@ -18,14 +18,14 @@ const Portfolio = (props) => {
                     </div>
                     <div className="row works-items">
                                 {
-                                    work.map(
+                                    work?.map(
                                         (item,k) =>
                          <div key={k} className="col-lg-4 col-md-6">
                             <div className="item">
                                 <div className="image">
                                     <img src={item.image} alt=""  className="portfolio-img" />
                                         <div className="overly">
-                                            <a href={item.link} className="view-work"> View Work</a>
+                                            <a href={item.link} target="_blank" rel="noreferrer" className="view-work"> View Work</a>
                                         </div>
                                 </div>
 
@@ -33,7 +33,7 @@ const Portfolio = (props) => {
                                     <p className="mb-0">{item.titre}</p>
 
                                     <a  href={item.link} target="_blank"  rel="noreferrer"  className="ml-auto">
-                                        <i className="fas fa-external-link-alt"></i>
+                                        <i className="fas fa-external-link-alt"/>
                                     </a>
                                 </div>
                             </div>

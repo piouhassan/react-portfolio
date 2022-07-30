@@ -1,11 +1,11 @@
 import React from "react";
-import Home from "./views/Home";
+import Home from "./pages/Home";
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Error404 from "./views/Error404";
-import ScrollToTop from './_helpers/ScrollToTop'
+import Error404 from "./pages/Error404";
 import 'react-toastify/dist/ReactToastify.css';
 import { AnimatedSwitch } from 'react-router-transition';
 import "./assets/style.css"
+import {ToastContainer} from "react-toastify";
 
 const mapStyles = (styles) => {
     return {
@@ -15,31 +15,20 @@ const mapStyles = (styles) => {
 }
 
 
-class App extends React.Component{
+const App = () => {
 
-    render() {
         return (
-            <div className="App">
-                <Router>
-                    <ScrollToTop history={Router.history}  />
-                    <AnimatedSwitch
-                        atEnter={{opacity : 0}}
-                        atLeave={{opacity : 0}}
-                        atActive={{opacity : 1}}
-                        mapStyles={mapStyles}
-                    >
-                            <Route exact path="/" component={Home}/>
-                            {/*<Route path="/blog/:slug" component={BlogDetail} />*/}
-                            {/*<Route path="/portfolio/:slug" component={PortfolioDetail} />*/}
-                            {/*<Route path="/cv-reader" component={CvReader} />*/}
-                            <Route component={Error404} />
-                    </AnimatedSwitch>
-                </Router>
+       <>
+           <Router>
+               <AnimatedSwitch atEnter={{opacity : 0}} atLeave={{opacity : 0}} atActive={{opacity : 1}} mapStyles={mapStyles}>
+                   <Route exact path="/" component={Home}/>
+                   <Route component={Error404} />
+               </AnimatedSwitch>
+           </Router>
 
-
-            </div>
+           <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover/>
+       </>
         );
-    }
 
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-const Service = (props) => {
-    const services = props.services
+const Service = ({services}) => {
+
     return (
         <>
             <section id="services" className="section services">
@@ -16,7 +16,7 @@ const Service = (props) => {
                     </div>
                     <div className="row">
                         {
-                            services.map(
+                            services?.map(
                                 (item,k) =>
                         <div key={k}  className="col-sm-6 col-lg-4">
                             <div className="item">
