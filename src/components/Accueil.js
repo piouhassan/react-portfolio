@@ -1,5 +1,5 @@
 import React from "react";
-import bg2 from"../assets/long.png"
+import bg2 from"../assets/long.jpg"
 import {Link} from "react-router-dom";
 import moment from "moment/moment";
 
